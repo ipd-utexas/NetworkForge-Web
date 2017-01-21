@@ -35,10 +35,17 @@ const AddEntName = React.createClass({
     this.setState({ value: e.target.value });
   },
 
+  handleKeyPress(target) {
+    if(target.charCode==13){
+      this.handleSubmit();
+    }
+
+  },
+
   render() {
     return (
 
-        <form>
+        <form onKeyPress={this.handleKeyPress} >
           <RB.FormGroup
               controlId="formBasicText"
               validationState={this.getValidationState()}
@@ -49,11 +56,14 @@ const AddEntName = React.createClass({
                 value={this.state.value}
                 placeholder="Enter text"
                 onChange={this.handleChange}
+
             />
+
+            <RB.Button onClick={()=>this.handleSubmit()} >submit</RB.Button>
             <RB.FormControl.Feedback />
 
 
-            <RB.Button onClick={()=>this.handleSubmit()} >submit</RB.Button>
+
           </RB.FormGroup>
 
         </form>

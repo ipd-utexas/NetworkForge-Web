@@ -26,9 +26,8 @@ const initialState = {
   indexPublisher: '',
   ents: {},
   shallowCS: 0,
-  testTT: 2,
   currentEntUIN: 'initial'
-}
+};
 
 export const reducer = (state = initialState, action) => {
   switch (action.type){
@@ -89,33 +88,24 @@ export const actions = {
 
 
 
-  AddPubName: (text) => ({type: types.ADD_PUB_NAME, text}),
+
   AddEnt: (text) => ({type: types.ADD_NEW_ENT, text}),
   IncShallowCS: () => ({type: types.INC_SHALLOW_CS}),
-  DecShallowCS: () => ({type: types.DEC_SHALLOW_CS}),
   AddDep: (text) => ({type: types.ADD_DEP, text}),
   testACT: (entobj) => ({type: types.FINALIZE_ENT, entobj}),
   ChangeEntName: (text) => ({type: types.CHANGE_ENT_NAME, text}),
-  NextEnt: () => ({type: types.SELECT_NEXT_ACTIVE_ENT}),
-  TrueAddPub: (text) => ({type: types.TRUE_ADD_PUB_NAME, text}),
+  TrueAddPub: (text) => ({type: types.TRUE_ADD_PUB_NAME, text})
 
 
 
 
-  CloseENT: (entobj) => ({type: types.FINALIZE_ENT, entobj}
-
-
-  )
 
 
 
 
-}
 
-export function Entity(name){
-  this.name = name;
-  this.publisher = '';
-  this.statusFlag = 'active';
-  this.website = ''
 
-}
+
+
+};
+

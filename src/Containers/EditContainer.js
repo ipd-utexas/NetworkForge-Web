@@ -3,23 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import 'whatwg-fetch';
 import {connect} from 'react-redux';
-import { Router, Route, Link } from 'react-router';
-import RSL from 'react-scrollable-list';
 import * as RB from 'react-bootstrap';
 
-
-
-var listItemGenerator = ()=>{
-  var temparray =[0,1,2];
-  var resultarray =[];
-  temparray.forEach(function (x) {
-    resultarray.push({id:x, content:<h1>I win</h1>});
-
-
-  });
-
-  return resultarray;
-};
 
 
 
@@ -81,7 +66,7 @@ const mapStateToProps = (state) => {
     Ents: state.ents
 
   }
-}
+};
 
 
 
