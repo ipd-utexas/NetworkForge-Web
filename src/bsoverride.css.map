@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,WAAW;EACT,gBAAgB,EAAE,UAAU",
+"sources": ["bsoverride.scss"],
+"names": [],
+"file": "bsoverride.css"
+}
