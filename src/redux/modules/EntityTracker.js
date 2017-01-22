@@ -8,7 +8,6 @@ export const types = {
   'ADD_NEW_ENT': 'ADD_NEW_ENT',
   'ADD_PUB_NAME':'ADD_PUB_NAME',
   'ADD_DEP': 'ADD_DEP',
-  'TESTACT': 'TESTACT',
   'INC_SHALLOW_CS': 'INC_SHALLOW_CS',
   'DEC_SHALLOW_CS':'DEC_SHALLOW_CS',
   'FINALIZE_ENT': 'FINALIZE:ENT',
@@ -17,7 +16,8 @@ export const types = {
   'SET_ENT_PRO':'SET_ENT_PRO',
   'RESET_SHALLOW_CS':'RESET_SHALLOW_CS',
   'ROUND_UPDATE_PUB':'ROUND_UPDATE_PUB',
-  'TRUE_ADD_PUB_NAME':'TRUE_ADD_PUB_NAME'
+  'TRUE_ADD_PUB_NAME':'TRUE_ADD_PUB_NAME',
+  'ROUND_UPDATE_INDEXNAME':'ROUND_UPDATE_INDEXNAME'
 };
 
 
@@ -26,7 +26,8 @@ const initialState = {
   indexPublisher: '',
   ents: {},
   shallowCS: 0,
-  currentEntUIN: 'initial'
+  currentEntUIN: 'initial',
+  listOfEntNames: []
 };
 
 export const reducer = (state = initialState, action) => {
@@ -74,6 +75,8 @@ export const reducer = (state = initialState, action) => {
     case types.ROUND_UPDATE_PUB:
       return{...state, indexPublisher: state.ents[state.currentEntUIN].publisher};
 
+    case types.ROUND_UPDATE_INDEXNAME:
+      return{...state, indexName: state.ents[state.currentEntUIN].name};
     default:
       return state;
 

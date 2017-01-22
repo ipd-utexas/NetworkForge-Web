@@ -24,7 +24,7 @@ class HomePageGrid extends React.Component{
               
 
 
-             <FormRouter actions={this.props.actions} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} />
+             <FormRouter actions={this.props.actions} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} indexName={this.props.indexName} />
             
             
             
@@ -34,7 +34,7 @@ class HomePageGrid extends React.Component{
             
             </RB.Col>
             <RB.Col xs={6} md={4}>
-              <CurrentEntInfo IndexName={this.props.IndexName} PublisherName={this.props.PublisherName} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} />
+              <CurrentEntInfo indexName={this.props.indexName} ShallowCS={this.props.ShallowCS} PublisherName={this.props.PublisherName} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} />
 
 
             </RB.Col>

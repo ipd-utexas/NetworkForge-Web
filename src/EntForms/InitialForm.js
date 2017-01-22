@@ -45,9 +45,9 @@ const AddEntName = React.createClass({
   render() {
     return (
 
-        <form onKeyPress={this.handleKeyPress} >
+        <RB.Form inline onKeyPress={this.handleKeyPress} >
           <RB.FormGroup
-              controlId="formBasicText"
+              controlId="formInlineName"
               validationState={this.getValidationState()}
           >
             <RB.ControlLabel>What is the name of your top level index?</RB.ControlLabel>
@@ -56,6 +56,7 @@ const AddEntName = React.createClass({
                 value={this.state.value}
                 placeholder="Enter text"
                 onChange={this.handleChange}
+                autoFocus
 
             />
 
@@ -66,7 +67,7 @@ const AddEntName = React.createClass({
 
           </RB.FormGroup>
 
-        </form>
+        </RB.Form>
     );
   }
 });

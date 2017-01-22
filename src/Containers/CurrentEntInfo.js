@@ -4,6 +4,7 @@
 
 import React, { Component } from 'react';
 import * as RB from 'react-bootstrap';
+import DepTags from '../DepTags';
 
 import FormRouter from './FormRouter';
 
@@ -24,13 +25,12 @@ class CurrentEntInfo extends React.Component{
 
   render(){
 
-    if(this.props.CurrentEntUIN != 'initial') {
+    if(this.props.ShallowCS == 2) {
       var resultlist = [];
-      var currentEnt = this.props.Ents[this.props.CurrentEntUIN];
-      currentEnt = currentEnt.deps;
-      for(var x in currentEnt){
-        resultlist.push(<h3 key={x}>{currentEnt[x][0]}</h3>)
-      }
+      
+      
+
+      var depwell = <RB.Well> <DepTags Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} /></RB.Well>
     }
 
 
@@ -38,13 +38,15 @@ class CurrentEntInfo extends React.Component{
 
 
     return (
-        <div> <h1>{this.props.IndexName}</h1>
+        <div> <h1>{this.props.indexName}</h1>
 
           <h2>Publisher:</h2>
 
           <h2>{this.props.PublisherName}</h2>
           <h2>Dependencies:</h2>
-          <div>{resultlist}</div>
+          <div>{depwell}</div>
+
+
 </div>
 
     );

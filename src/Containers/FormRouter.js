@@ -41,9 +41,9 @@ const FormRouter = React.createClass({
 
     switch (shallowCS){
       case 0:
-        return <AddEntName actions={this.props.actions}/>;
+        return <AddEntName actions={this.props.actions} />;
       case 1:
-       return <AddPublisher actions={this.props.actions}/>;
+       return <AddPublisher actions={this.props.actions}  indexName={this.props.indexName} />;
       case 2:
         return <AddDependency actions={this.props.actions} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN}/>;
       default:

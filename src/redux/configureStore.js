@@ -37,7 +37,8 @@ const depMiddleWare = (store) => (next) => (action) => {
     });
     store.dispatch({type:'SELECT_NEXT_ACTIVE_ENT'});
     store.dispatch({type:'RESET_SHALLOW_CS'});
-    store.dispatch({type:'ROUND_UPDATE_PUB'})
+    store.dispatch({type: 'ROUND_UPDATE_INDEXNAME'});
+    store.dispatch({type:'ROUND_UPDATE_PUB'});
     
 
 

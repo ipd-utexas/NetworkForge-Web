@@ -13,7 +13,12 @@ const AddDependency = React.createClass({
     };
   },
 
+  handleKeyPress(target) {
+    if(target.charCode==13){
+      this.handleSubmit();
+    }
 
+  },
 
 
   getValidationState() {
@@ -32,6 +37,8 @@ const AddDependency = React.createClass({
 
     console.log('how often?');
     this.props.actions.EntityTracker.AddDep(this.state.value);
+    this.setState({value:''});
+
 
     
 
@@ -59,7 +66,7 @@ const AddDependency = React.createClass({
 
   render() {
     return (
-        <form>
+        <form onKeyPress={this.handleKeyPress} name="depform" >
           <RB.FormGroup
               controlId="formBasicText"
               validationState={this.getValidationState()}
@@ -70,6 +77,7 @@ const AddDependency = React.createClass({
                 value={this.state.value}
                 placeholder="Enter text"
                 onChange={this.handleChange}
+                autoFocus
             />
             <RB.FormControl.Feedback />
 

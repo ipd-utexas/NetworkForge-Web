@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import  AddEntName from '../EntForms/InitialForm';
 import './App.css';
 import 'whatwg-fetch';
 import {connect} from 'react-redux';
 import * as RB from 'react-bootstrap';
-
+import AddPublisher from '../EntForms/AddPubForm';
+import AddDependency from '../EntForms/AddDepForm';
 
 
 
@@ -25,7 +27,7 @@ const EditContainer = React.createClass({
       var currentEvents = 0;
      Object.keys(this.props.Ents).forEach((key)=> {
         currentEvents+=1;
-        listOfEnts.push(<RB.Panel key={key} header={this.props.Ents[key].name} eventKey={currentEvents}>just a test</RB.Panel>);
+        listOfEnts.push(<RB.Panel key={key} header={this.props.Ents[key].name} eventKey={currentEvents}><AddDependency/></RB.Panel>);
 
       });
       return listOfEnts;
@@ -47,6 +49,7 @@ const EditContainer = React.createClass({
 
               <RB.Accordion>{this.trueListGenerator()}</RB.Accordion>
             </div>
+
 
           </div>
 

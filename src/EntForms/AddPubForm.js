@@ -18,11 +18,18 @@ const AddPublisher = React.createClass({
     };
   },
 
+  handleKeyPress(target) {
+    if(target.charCode==13){
+      this.handleSubmit();
+    }
+
+  },
 
   handleSubmit(){
     this.props.actions.EntityTracker.TrueAddPub(this.state.value);
 
     this.props.actions.EntityTracker.IncShallowCS();
+    
   },
 
 
@@ -39,17 +46,18 @@ const AddPublisher = React.createClass({
 
   render() {
     return (
-        <form>
+        <form onKeyPress={this.handleKeyPress} >
           <RB.FormGroup
               controlId="formBasicText"
               validationState={this.getValidationState()}
           >
-            <RB.ControlLabel>Who Published this Index?</RB.ControlLabel>
+            <RB.ControlLabel>Who Published {this.props.indexName}?</RB.ControlLabel>
             <RB.FormControl
                 type="text"
                 value={this.state.value}
                 placeholder="Enter text"
                 onChange={this.handleChange}
+                autoFocus
             />
             <RB.FormControl.Feedback />
 
