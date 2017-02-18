@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
 import * as RB from 'react-bootstrap';
-import  AddEntName from './EntForms/InitialForm';
-import InitialFormPublisher from './EntForms/AddPubForm';
-import FormRouter from './Containers/FormRouter';
-import CurrentEntInfo from './Containers/CurrentEntInfo';
+import  AddEntName from '../EntForms/InitialForm';
+import InitialFormPublisher from '../EntForms/AddPubForm';
+import FormRouter from './FormRouter';
+import CurrentEntInfo from './CurrentEntInfo';
 
 
 
@@ -25,16 +25,11 @@ class HomePageGrid extends React.Component{
 
 
              <FormRouter actions={this.props.actions} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} indexName={this.props.indexName} />
-            
-            
-            
-            
-            
-            
+              
             
             </RB.Col>
             <RB.Col xs={6} md={4}>
-              <CurrentEntInfo indexName={this.props.indexName} ShallowCS={this.props.ShallowCS} PublisherName={this.props.PublisherName} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} />
+              <CurrentEntInfo  actions={this.props.actions} indexName={this.props.indexName} ShallowCS={this.props.ShallowCS} PublisherName={this.props.PublisherName} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} />
 
 
             </RB.Col>

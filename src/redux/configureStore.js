@@ -3,6 +3,7 @@
  */
 import {createStore, bindActionCreators, applyMiddleware} from 'redux';
 import * as EntityTracker from './modules/EntityTracker';
+import Storebake from './modules/StoreToCSVConverter'
 
 export const configureStore = () => {
   // Return the store
@@ -39,9 +40,9 @@ const depMiddleWare = (store) => (next) => (action) => {
     store.dispatch({type:'RESET_SHALLOW_CS'});
     store.dispatch({type: 'ROUND_UPDATE_INDEXNAME'});
     store.dispatch({type:'ROUND_UPDATE_PUB'});
+    Storebake(store);
+
     
-
-
 
   }
   else if(action.type == EntityTracker.types.TRUE_ADD_PUB_NAME){
@@ -49,6 +50,7 @@ const depMiddleWare = (store) => (next) => (action) => {
     store.dispatch({type:'ROUND_UPDATE_PUB'});
     return next(action);
   }
+
 
   return next(action);
 

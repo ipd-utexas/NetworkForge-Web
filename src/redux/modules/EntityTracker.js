@@ -17,7 +17,8 @@ export const types = {
   'RESET_SHALLOW_CS':'RESET_SHALLOW_CS',
   'ROUND_UPDATE_PUB':'ROUND_UPDATE_PUB',
   'TRUE_ADD_PUB_NAME':'TRUE_ADD_PUB_NAME',
-  'ROUND_UPDATE_INDEXNAME':'ROUND_UPDATE_INDEXNAME'
+  'ROUND_UPDATE_INDEXNAME':'ROUND_UPDATE_INDEXNAME',
+  'DEL_DEP':'DEL_DEP'
 };
 
 
@@ -32,13 +33,19 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type){
+    
     case types.ADD_PUB_NAME:
+    {/* Adds PubName */}
       return update(state, {ents:{[state.currentEntUIN]: {publisher: {$set: action.text}}}});
+    
     case types.ADD_NEW_ENT:
+    {/* Adds Ent */}
         var UIN = Math.floor((1 + Math.random() * 0x10000));
     {/* TODO: make sure no UIN can be repeated */}
         state.currentEntUIN = UIN;
       return update(state, {ents: {$merge: {[UIN]:{'name':action.text,deps:[],processed:false }}}});
+    
+    
     case types.INC_SHALLOW_CS:
         var incVar = state.shallowCS + 1;
       return {...state, shallowCS: incVar};
@@ -49,12 +56,15 @@ export const reducer = (state = initialState, action) => {
     case types.ADD_DEP:
       var UIN = Math.floor((1 + Math.random() * 0x10000));
       return update(state, {ents:{[state.currentEntUIN]: {deps: {$push: [[action.text, UIN]]}}}});
+
+    case types.DEL_DEP: 
+      return update(state, {ents:{[state.currentEntUIN]: {$set: {deps: action.array  }}}});
+
     case types.FINALIZE_ENT:
-
-
-
-
+    {/* This action is an empty alleyway. The real logic is happening in the middleware located in configurestore.js*/}
       return state;
+    
+    
     case types.CHANGE_ENT_NAME:
       return {...state, indexName:action.text};
 
@@ -66,6 +76,8 @@ export const reducer = (state = initialState, action) => {
 
       });
       return state;
+    
+    
     case types.SET_ENT_PRO:
       return update(state, {ents:{[state.currentEntUIN]: {processed: {$set: true}}}});
 
@@ -97,7 +109,8 @@ export const actions = {
   AddDep: (text) => ({type: types.ADD_DEP, text}),
   testACT: (entobj) => ({type: types.FINALIZE_ENT, entobj}),
   ChangeEntName: (text) => ({type: types.CHANGE_ENT_NAME, text}),
-  TrueAddPub: (text) => ({type: types.TRUE_ADD_PUB_NAME, text})
+  TrueAddPub: (text) => ({type: types.TRUE_ADD_PUB_NAME, text}),
+  DelDep: (array) => ({type: types.DEL_DEP, array})
 
 
 

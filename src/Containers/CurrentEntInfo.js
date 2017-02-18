@@ -20,18 +20,25 @@ const Generatedeps = function(){
 };
 
 
-class CurrentEntInfo extends React.Component{
+const CurrentEntInfo = React.createClass({
+
+
+
 
 
   render(){
 
     if(this.props.ShallowCS == 2) {
       var resultlist = [];
-      
-      
 
-      var depwell = <RB.Well> <DepTags Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} /></RB.Well>
-    }
+      var currentEnt = this.props.Ents[this.props.CurrentEntUIN];
+      var deparray = currentEnt.deps;
+      var resultarray = [];
+      for(var x=0; x< deparray.length; ++x){
+        resultarray.push({id:x,text:deparray[x][0]});
+
+      var depwell = <RB.Well> <DepTags actions={this.props.actions} Ents={this.props.Ents} CurrentEntUIN={this.props.CurrentEntUIN} Tags={resultarray}/></RB.Well>
+    }}
 
 
 
@@ -53,7 +60,7 @@ class CurrentEntInfo extends React.Component{
   }
 
 
-}
+});
 
 
 

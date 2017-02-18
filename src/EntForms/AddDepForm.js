@@ -35,7 +35,7 @@ const AddDependency = React.createClass({
 
   handleSubmit(){
 
-    console.log('how often?');
+    
     this.props.actions.EntityTracker.AddDep(this.state.value);
     this.setState({value:''});
 

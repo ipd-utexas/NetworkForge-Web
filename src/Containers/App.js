@@ -5,7 +5,7 @@ import 'whatwg-fetch';
 import EditContainer from './EditContainer';
 import { Router, Route, hashHistory } from 'react-router'
 
-import OldIndex from '../HomePage';
+import OldIndex from './HomePage';
 
 class App extends Component {
   render() {

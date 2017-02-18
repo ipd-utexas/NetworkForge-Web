@@ -15,23 +15,36 @@ const DepTags = React.createClass({
 
 
   getInitialState() {
-    var finalArray = [];
     var currentEnt = this.props.Ents[this.props.CurrentEntUIN];
     var deparray = currentEnt.deps;
-    console.log('this is the current dep');
-    console.log(deparray);
+    var resultarray = [];
+    for(var x=0; x< deparray.length; ++x){
+      resultarray.push({id:x,text:deparray[x][0]});
+
+    }
+    
 
 
 
     return {
-      tags: [{id:0,text:'yaya'}],
+      tags: this.props.Tags,
       suggestions: ["Banana", "Mango", "Pear", "Apricot"]
     }
   },
   handleDelete(i) {
-    let tags = this.state.tags;
-    tags.splice(i, 1);
-    this.setState({tags: tags});
+    console.log(i);
+    let shibb = this.props.Ents[this.props.CurrentEntUIN];
+    shibb = shibb.deps;
+    if (shibb.length > 1){
+      shibb.splice(i,1);
+    }
+    else{
+      shibb = [];
+    }
+    
+    console.log('this is shib');
+    console.log(shibb);
+    this.props.actions.EntityTracker.DelDep(shibb);
   },
   handleAddition(tag) {
     let tags = this.state.tags;
@@ -52,15 +65,11 @@ const DepTags = React.createClass({
     this.setState({ tags: tags });
   },
   render() {
-    var currentEnt = this.props.Ents[this.props.CurrentEntUIN];
-    var deparray = currentEnt.deps;
-    var resultarray = [];
-    for(var x=0; x< deparray.length; ++x){
-      resultarray.push({id:x,text:deparray[x][0]});
 
-    }
-    console.log(resultarray);
-    let tags = resultarray;
+
+    let tags = this.props.Tags;
+
+
     let suggestions = this.state.suggestions;
     return (
         <div>

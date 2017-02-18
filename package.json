@@ -6,6 +6,8 @@
     "react-scripts": "0.8.5"
   },
   "dependencies": {
+    "fs": "0.0.1-security",
+    "json2csv": "^3.7.3",
     "jsonfile": "^2.4.0",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.7",
